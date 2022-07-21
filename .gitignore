@@ -1,0 +1,35 @@
+# dependencies
+node_modules
+/.pnp
+.pnp.js
+.pio
+.vscode
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.git
+.gitignore
+_*.js
+_*.json
+_backup
+_backup/
+.DS_Store
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# env files
+.env
+.env.development
+.env.production
+.env.test.local
+
+# Forked stuff
+3D
+Docs

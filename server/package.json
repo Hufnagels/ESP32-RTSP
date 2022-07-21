@@ -1,0 +1,29 @@
+{
+  "name": "rtsp-server-for-esp32-cam",
+  "version": "1.0.0",
+  "description": "RTSP stream server for ESP32 cams",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "rtsp",
+    "esp32",
+    "cam",
+    "stream"
+  ],
+  "author": "Hufnagels",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-ws": "^5.0.2",
+    "lodash": "^4.17.21",
+    "node-rtsp-stream": "^0.0.9",
+    "nodemon": "^2.0.19",
+    "rtsp-relay": "^1.6.1"
+  }
+}
