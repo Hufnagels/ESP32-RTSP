@@ -4,4 +4,5 @@ _backup
 .env.development
 .env.production
 .git
+.gitignore
 _*
