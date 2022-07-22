@@ -51,15 +51,18 @@ const App = () => {
   const [Videowidth, setVideowidth] = React.useState(0)
   const [Videoheight, setVideoeight] = React.useState(70)
 
+  const [visible, setVisible] = React.useState(false)
+
   const resizing = dim => {
     console.log('screen.height', dim.height)
     console.log('screen.width', dim.width)
-    let newHeight = dim.width / 4 * 3 - 40
+    let newHeight = dim.width / 8 * 3 - 40
     let newWidth = newHeight * 4 / 3
-    setWidth(dim.width)
-    setHeight(dim.width / 4 * 3)
-    setVideowidth(dim.width)
+    setWidth(dim.width/2)
+    setHeight(dim.width / 8 * 3)
+    setVideowidth(dim.width/2)
     setVideoeight(newHeight)
+    setVisible(true)
   }
 
   const cameras = [
@@ -96,8 +99,8 @@ const App = () => {
         </AppBar>
       </Box>
       <Box sx={{ p: 1 }}>
-        <Grid sx={{ flexGrow: 1 }} container spacing={1} >
-          {cameras.map( camera => <Grid item xs={6} ref={videContainerRef}>
+        <Grid sx={{ flexGrow: 1 }} container spacing={1} ref={videContainerRef} >
+          {cameras.map( camera => <Grid item xs={6} >
             <Paper
               elevation={1}
               width={width}
@@ -110,7 +113,7 @@ const App = () => {
               }}
             >
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} >{camera.name}</Typography>
-              <Video
+              {visible && <Video
                 name={camera.name}
                 ip={camera.ip}
                 port={camera.port}
@@ -121,7 +124,7 @@ const App = () => {
                   width: width - 5,
                   height: height - 32,
                 }}
-              />
+              />}
             </Paper>
 
           </Grid>)}
