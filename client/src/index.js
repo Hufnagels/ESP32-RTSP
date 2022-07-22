@@ -1,53 +1,56 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createTheme, ThemeProvider } from '@mui/system';
+import { createTheme, ThemeProvider } from '@mui/material/styles'
 
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-// const customTheme = createTheme({
-//   palette: {
-//     primary: {
-//       main: '#1976d2',
-//       contrastText: 'white',
-//       dark:'black',
-//     },
-//   },
-//   components: {
-//     VideoContainer: {
-//       styleOverrides: {
-//         root: {
-//           color: 'darkslategray',
-//         },
-//         primary: {
-//           color: 'darkblue',
-//         },
-//         secondary: {
-//           color: 'darkred',
-//           backgroundColor: 'pink',
-//         },
-//       },
-//       variants: [
-//         {
-//           props: { variant: 'dashed', color: 'primary' },
-//           style: {
-//             border: '1px dashed darkblue',
-//           },
-//         },
-//         {
-//           props: { variant: 'dashed', color: 'secondary' },
-//           style: {
-//             border: '1px dashed darkred',
-//           },
-//         },
-//       ],
-//     },
-//   },
-// });
+const customTheme = createTheme({
+  palette: {
+    primary: {
+      main: '#1976d2',
+      contrastText: 'white',
+      dark:'black',
+    },
+  },
+  components: {
+    VideoContainer: {
+      styleOverrides: {
+        root: {
+          color: 'darkslategray',
+        },
+        primary: {
+          color: 'darkblue',
+        },
+        secondary: {
+          color: 'darkred',
+          backgroundColor: 'pink',
+        },
+      },
+      variants: [
+        {
+          props: { variant: 'dashed', color: 'primary' },
+          style: {
+            border: '1px dashed darkblue',
+          },
+        },
+        {
+          props: { variant: 'dashed', color: 'secondary' },
+          style: {
+            border: '1px dashed darkred',
+          },
+        },
+      ],
+    },
+  },
+});
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <App />
+  <ThemeProvider theme={customTheme}>
+     <App />
+  </ThemeProvider>
+ 
   
 );
 
