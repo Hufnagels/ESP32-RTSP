@@ -12,8 +12,9 @@ const feedRoute = router.get('/feed/:name/:camera/:port', (req, res) => {
     wsPort: req.params.port,
     ffmpegOptions: { // options ffmpeg flags
       '-stats': '', // an option with no neccessary value uses a blank string
-      '-r': 30, // options with required values specify the value after the key
+      '-r': 25, // options with required values specify the value after the key
       '-framerate': 25,
+      '-vf':"setsar=1,eq=brightness=0.2:saturation=1.5",
     }
   }
 

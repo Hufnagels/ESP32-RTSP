@@ -23,18 +23,21 @@ const VideoContainer = props => {
         component="div"
         height={props.height}
       >
-        {props.visible && <Video
-          name={props.name}
-          ip={props.ip}
-          port={props.port}
-          ffmpegIP={'localhost'}
-          width={props.width - 8}
-          height={props.height - 8}
-          style={{
-            width: props.width - 5,
-            height: props.height - 32,
-          }}
-        />}
+        {
+          props.visible &&
+          <Video
+            name={props.name}
+            ip={props.ip}
+            port={props.port}
+            ffmpegIP={'localhost'}
+            width={props.width - 8}
+            height={props.height - 8}
+            style={{
+              width: props.width - 5,
+              height: props.height - 32,
+            }}
+          />
+        }
       </CardMedia>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">{props.name}</Typography>
