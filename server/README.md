@@ -30,6 +30,7 @@ if we need socket.io, then
 ```
 heroku features:enable http-session-affinity
 ```
+
 **Step3**
 On Dashboard in deploy:
 - Deployment method - appropiate GitHub Repo
