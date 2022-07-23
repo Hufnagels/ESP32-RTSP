@@ -20,7 +20,7 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import Video from './Video'
 
 const VideoContainer = props => {
-  const iconSize = {height: 30, width: 30}
+  const iconSize = { height: 30, width: 30 }
   return (
     <Card sx={{ maxWidth: '100%' }}>
       <CardMedia
@@ -45,7 +45,7 @@ const VideoContainer = props => {
       </CardMedia>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">{props.name}</Typography>
-        <Stack direction="row" spacing={2} sx={{border:'1px dashed green'}}>
+        <Stack direction="row" spacing={2} sx={{ border: '1px dashed green' }}>
           <Box sx={{ display: 'flex', alignItems: 'center', pl: 1 }}>
             <IconButton aria-label="previous">
               <KeyboardArrowUpIcon sx={{ iconSize }} />
@@ -60,7 +60,7 @@ const VideoContainer = props => {
               <KeyboardArrowRightIcon sx={{ iconSize }} />
             </IconButton>
           </Box>
-          <Box sx={{background:'blue', padding: '10px'}}>
+          <Box sx={{ background: 'blue', padding: '10px' }}>
 
           </Box>
         </Stack>

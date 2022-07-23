@@ -15,7 +15,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { alpha, styled } from '@mui/material/styles';
 
 // Custom
-// import Video from './components/video'
+// import Video from './components/Video'
 import VideoContainer from './components/VideoCintainer'
 import useResizeObserver from '../src/app/hooks/useResizeObserver.hook'
 
