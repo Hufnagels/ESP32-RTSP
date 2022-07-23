@@ -1,6 +1,6 @@
 # ESP32 RTSP client/server
 
-[![N|Solid](https://github.com/Hufnagels/ESP32-RTSP/blob/master/assets/camera.png?raw=true)]
+[(https://github.com/Hufnagels/ESP32-RTSP/blob/master/assets/camera.png?raw=true)]
 ## Features
 - Display video stream via rtsp protocol
 - Brightness/Saturation/Gamma properties
