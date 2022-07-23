@@ -76,7 +76,7 @@ let streamOptions = {
 ```sh
 `rtsp://192.168.1.${req.params.camera}:8554/mjpeg/1`
 ```
-> 192.168.1 must be changed to the <server ip address> where the cameras are, and the **${req.params.camera}** option must be used for the appropiate camera port, which is setted up in in the Router/Gateway NAT table
+> 192.168.1 musst be changed to the < server ip address > where the cameras are, and the **${req.params.camera}** option must be used for the appropiate camera port, which is setted up in in the Router/Gateway NAT table
 
 ```sh
 wsPort: req.params.port,
