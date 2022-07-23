@@ -1,6 +1,6 @@
 # ESP32 RTSP client/server
 
-(https://github.com/Hufnagels/ESP32-RTSP/blob/master/assets/camera.png?raw=true)
+[![N|Solid](https://github.com/Hufnagels/ESP32-RTSP/blob/master/assets/camera.png?raw=true)]
 ## Features
 - Display video stream via rtsp protocol
 - Brightness/Saturation/Gamma properties
@@ -14,7 +14,7 @@
 - auth
 - avaliable camera settings via MQTT 
 
-## _Client_
+## [_Client_](https://github.com/Hufnagels/ESP32-RTSP/tree/master/client)
 Client is a simple React app with MUI.
 It displays ESP32 Cam streams via JSMpeg player.
 The stream is converted trough ffmpeg in node  (express) server side as it would be a proxy.
