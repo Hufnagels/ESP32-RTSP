@@ -32,6 +32,7 @@ heroku features:enable http-session-affinity
 ```
 
 **Step3**
+
 On Dashboard in deploy:
 - Deployment method - appropiate GitHub Repo
 - Automatically deploys from **Master**
