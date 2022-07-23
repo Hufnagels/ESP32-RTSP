@@ -35,7 +35,7 @@ heroku features:enable http-session-affinity
 
 On Dashboard in deploy:
 - Deployment method - appropiate GitHub Repo
-- Automatically deploys from **Master**
+- Automatically deploys DISABLE
 
 On Dashboard in settings:
 - Config Vars
