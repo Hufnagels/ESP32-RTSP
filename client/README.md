@@ -19,10 +19,12 @@ It displays ESP32 Cam streams via JSMpeg player.
 The stream is converted trough ffmpeg in node  (express) server side as it would be a proxy with [node-rtsp-stream](https://github.com/kyriesent/node-rtsp-stream) package.
 ### _Client deployed to Netlify as follows_
 **Step1**
+
 On Dashboard in site settings - Repository:
 - link Github Repo
 
 **Step2**
+
 On Dashboard in site settings:
 - Base directory: client
 - Build command: CI=false yarn run build
@@ -30,6 +32,7 @@ On Dashboard in site settings:
 - Deploy log visibility: Logs are public
 
 **Step3**
+
 On Dashboard in site settings - Environment variables:
 ```
 REACT_APP_FFMPEG_IP: <heroku app server name> with https protocol
