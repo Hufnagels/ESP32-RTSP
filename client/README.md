@@ -1,18 +1,58 @@
-# Getting Started with Create React App
+# ESP32 RTSP client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
+- Display video stream via rtsp protocol
+- Brightness/Saturation/Gamma properties
+- mpeg1 coding
 
-## Available Scripts
+## Planned features
+- 3DPrinted DOM house
+- Tilt/Pan
+- Motion detection --> store mp4
+- OpenCV
+- auth
+- avaliable camera settings via MQTT 
 
-In the project directory, you can run:
+## _Client_
+Client is a simple React app with MUI.
+It displays ESP32 Cam streams via JSMpeg player.
+The stream is converted trough ffmpeg in node  (express) server side as it would be a proxy with [node-rtsp-stream](https://github.com/kyriesent/node-rtsp-stream) package.
+### _Client deployed to Netlify as follows_
+**Step1**
+On Dashboard in site settings - Repository:
+- link Github Repo
 
-### `npm start`
+**Step2**
+On Dashboard in site settings:
+- Base directory: client
+- Build command: CI=false yarn run build
+- Publish directory: client/build
+- Deploy log visibility: Logs are public
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Step3**
+On Dashboard in site settings - Environment variables:
+```
+REACT_APP_FFMPEG_IP: <heroku app server name> with https protocol
+REACT_APP_DMZ_IP: <own server ip> 
+```
+which corresponds to the following code:
+```sh
+fetch(`http://${ffmpegIP}:5002/camera/feed/${name}/${ip}/${port}?brightness=0.2&saturation=1&gamma=1`)
+```
+#### _Explanation_ 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```sh
+`http://${ffmpegIP}:5002
+```
+> **${ffmpegIp}** --> heroku app name and https protocol
+
+```sh
+/camera/feed/${name}/${ip}/${port}
+```
+> **${name}** --> The Camera name (like: Livingroom)
+> **${ip}** --> In the published case the NAT port --> route must be corrected (streamUrl: `rtsp://192.168.1.${req.params.ip}:8554/mjpeg/1`) to (streamUrl: `rtsp://REACT_APP_DMZ_IP:${req.params.ip}/mjpeg/1`)
+> **${port}** --> on heroku the wsPort for camera
+
 
 ### `npm test`
 
