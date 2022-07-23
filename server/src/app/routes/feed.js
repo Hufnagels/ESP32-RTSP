@@ -5,7 +5,9 @@ const router = express.Router()
 
 
 const feedRoute = router.get('/feed/:name/:camera/:port', (req, res) => {
-  console.log(req.params)
+  console.log('req.params', req.params)
+  console.log('req.query', req.query)
+  const { brightness, saturation, gamma } = req.query
   let streamOptions = {
     name: req.params.name,
     streamUrl: `rtsp://192.168.1.${req.params.camera}:8554/mjpeg/1`,
@@ -14,7 +16,7 @@ const feedRoute = router.get('/feed/:name/:camera/:port', (req, res) => {
       '-stats': '', // an option with no neccessary value uses a blank string
       '-r': 25, // options with required values specify the value after the key
       '-framerate': 25,
-      '-vf':"setsar=1,eq=brightness=0.2:saturation=1.5",
+      '-vf': `eq=brightness=${brightness}:saturation=${saturation}:gamma=${gamma}`,
     }
   }
 

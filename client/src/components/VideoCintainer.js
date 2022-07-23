@@ -1,22 +1,26 @@
 import * as React from 'react';
 
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
+import {
+  Box,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Button,
+  IconButton,
+  Typography,
+  Stack,
+} from '@mui/material';
 
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
-import Video from './video'
+import Video from './Video'
 
 const VideoContainer = props => {
+  const iconSize = {height: 30, width: 30}
   return (
     <Card sx={{ maxWidth: '100%' }}>
       <CardMedia
@@ -41,20 +45,26 @@ const VideoContainer = props => {
       </CardMedia>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">{props.name}</Typography>
-        <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-          <IconButton aria-label="previous">
-            <KeyboardArrowUpIcon sx={{ height: 38, width: 38 }} />
-          </IconButton>
-          <IconButton aria-label="play/pause">
-            <KeyboardArrowDownIcon sx={{ height: 38, width: 38 }} />
-          </IconButton>
-          <IconButton aria-label="next">
-            <KeyboardArrowLeftIcon sx={{ height: 38, width: 38 }} />
-          </IconButton>
-          <IconButton aria-label="next">
-            <KeyboardArrowRightIcon sx={{ height: 38, width: 38 }} />
-          </IconButton>
-        </Box>
+        <Stack direction="row" spacing={2} sx={{border:'1px dashed green'}}>
+          <Box sx={{ display: 'flex', alignItems: 'center', pl: 1 }}>
+            <IconButton aria-label="previous">
+              <KeyboardArrowUpIcon sx={{ iconSize }} />
+            </IconButton>
+            <IconButton aria-label="play/pause">
+              <KeyboardArrowDownIcon sx={{ iconSize }} />
+            </IconButton>
+            <IconButton aria-label="next">
+              <KeyboardArrowLeftIcon sx={{ iconSize }} />
+            </IconButton>
+            <IconButton aria-label="next">
+              <KeyboardArrowRightIcon sx={{ iconSize }} />
+            </IconButton>
+          </Box>
+          <Box sx={{background:'blue', padding: '10px'}}>
+
+          </Box>
+        </Stack>
+
 
       </CardContent>
       <CardActions>

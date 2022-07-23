@@ -8,12 +8,12 @@ const Video = props => {
   // const port = props.port
   // const ip = props.ip
   // const ffmpegIP = props.ffmpegIP
-  const {name, port, ip, ffmpegIP, width, height} = props
+  const { name, port, ip, ffmpegIP, width, height } = props
 
   useEffect(() => {
     console.log('useEffect video')
     if (!videoRef.current) throw new Error('Ref is null')
-    fetch(`http://${ffmpegIP}:5002/camera/feed/${name}/${ip}/${port}`)
+    fetch(`http://${ffmpegIP}:5002/camera/feed/${name}/${ip}/${port}?brightness=0.2&saturation=1&gamma=1`)
       .then(response => {
         //response.json()
         console.log('response', response.status)
@@ -33,7 +33,7 @@ const Video = props => {
         key={new Date}
         id="video-canvas"
         // style={{ height:'100%', width: '100%', }}
-        style={{ 
+        style={{
           width: width,
           height: height,
         }}

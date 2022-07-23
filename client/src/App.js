@@ -57,8 +57,8 @@ const App = () => {
   const [visible, setVisible] = React.useState(false)
 
   const resizing = dim => {
-    console.log('screen.height', dim.height)
-    console.log('screen.width', dim.width)
+    // console.log('screen.height', dim.height)
+    // console.log('screen.width', dim.width)
     // let newHeight = dim.width / GridModifier * 1/ratio - 40
     // let newWidth = newHeight * ratio
     setWidth(dim.width / GridModifier)
@@ -103,8 +103,9 @@ const App = () => {
       </Box>
       <Box sx={{ p: 1 }}>
         <Grid sx={{ flexGrow: 1 }} container spacing={1} ref={videContainerRef} >
-          {cameras.map(camera => <Grid item xs={GridParam} >
+          {cameras.map(camera => <Grid item xs={GridParam} key={camera.name}>
             <VideoContainer
+              
               width={width}
               height={height}
               name={camera.name}
