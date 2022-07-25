@@ -16,9 +16,9 @@ import { alpha, styled } from '@mui/material/styles';
 
 // Custom
 // import Video from './components/Video'
-import VideoContainer from './components/VideoCintainer'
+import VideoContainer from './components/VideoContainer'
 import useResizeObserver from '../src/app/hooks/useResizeObserver.hook'
-
+import { REACT_APP_FFMPEG_IP, REACT_APP_WS_IP } from './app/config';
 // const VideoContainer = styled(Paper,{
 //   // Configure which props should be forwarded on DOM
 //   shouldForwardProp: (prop) =>
@@ -50,9 +50,9 @@ const App = () => {
   const [height, setHeight] = React.useState(70)
   // const [Videowidth, setVideowidth] = React.useState(0)
   // const [Videoheight, setVideoeight] = React.useState(70)
-  const ratio = 4/3
+  const ratio = 4 / 3
   const GridParam = 4
-  const GridModifier = 12/GridParam
+  const GridModifier = 12 / GridParam
 
   const [visible, setVisible] = React.useState(false)
 
@@ -62,21 +62,21 @@ const App = () => {
     // let newHeight = dim.width / GridModifier * 1/ratio - 40
     // let newWidth = newHeight * ratio
     setWidth(dim.width / GridModifier)
-    setHeight(dim.width / GridModifier /4 * 3)
+    setHeight(dim.width / GridModifier / 4 * 3)
     // setVideowidth(dim.width / GridModifier)
     // setVideoeight(newHeight)
     setVisible(true)
   }
 
   const cameras = [
-    { name: 'Living Room', ip:'142', port:'9999' },
-    { name: 'Bed Room', ip: '144', port: '9998' }
+    { name: 'Living Room', ip: '142', port: '9999' },
+    // { name: 'Bed Room', ip: '144', port: '9998' }
   ]
 
   React.useEffect(() => {
     if (!dimensions) return;
     resizing(dimensions)
-
+    console.log('REACT_APP_FFMPEG_IP', REACT_APP_FFMPEG_IP, REACT_APP_WS_IP)
   }, [dimensions])
 
 
@@ -105,13 +105,13 @@ const App = () => {
         <Grid sx={{ flexGrow: 1 }} container spacing={1} ref={videContainerRef} >
           {cameras.map(camera => <Grid item xs={GridParam} key={camera.name}>
             <VideoContainer
-              
               width={width}
               height={height}
               name={camera.name}
               ip={camera.ip}
               port={camera.port}
-              ffmpegIP={'localhost'}
+              ffmpegIP={REACT_APP_FFMPEG_IP}
+              wsIP={REACT_APP_WS_IP}
               visible={visible}
             />
           </Grid>)}

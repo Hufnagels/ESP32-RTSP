@@ -2,15 +2,16 @@ import express from 'express'
 import Stream from 'node-rtsp-stream'
 
 const router = express.Router()
-
-
+console.log('NODE ENV:', process.env.NODE_ENV)
+// `${ffmpegIP}/camera/feed/${name}/${ip}/${port}?brightness=0.2&saturation=1&gamma=1`
 const feedRoute = router.get('/feed/:name/:ip/:port', (req, res) => {
   console.log('req.params', req.params)
   console.log('req.query', req.query)
   const { brightness, saturation, gamma } = req.query
   let streamOptions = {
     name: req.params.name,
-    streamUrl: `rtsp://192.168.1.${req.params.ip}:8554/mjpeg/1`,
+    // streamUrl: `rtsp://noobmc.ddns.net:${req.params.ip}/mjpeg/1`,
+    streamUrl: process.env.NODE_ENV === 'production' ? `rtsp://${process.env.REACT_APP_DMZ_NAME}:${req.params.ip}/mjpeg/1` : `rtsp://192.168.1.${req.params.ip}:8554/mjpeg/1`,
     wsPort: req.params.port,
     ffmpegOptions: { // options ffmpeg flags
       '-stats': '', // an option with no neccessary value uses a blank string

@@ -26,9 +26,9 @@ heroku login -i
 ```
 heroku create
 ```
-if we need socket.io, then
+if we need socket.io, (rtsp stream is enabled on ws), so
 ```
-heroku features:enable http-session-affinity
+heroku features:enable http-session-affinity -a < appname >
 ```
 
 **Step3**
@@ -61,7 +61,7 @@ router.get('/feed/:name/:camera/:port', (req, res) => {
 ...
 let streamOptions = {
     name: req.params.name,
-    streamUrl: `rtsp://192.168.1.${req.params.camera}:8554/mjpeg/1`,
+    streamUrl: process.env.NODE_ENV === 'production' ? `rtsp://${process.env.REACT_APP_DMZ_NAME}:${req.params.ip}/mjpeg/1` : `rtsp://192.168.1.${req.params.ip}:8554/mjpeg/1`,
     wsPort: req.params.port,
     ffmpegOptions: { // options ffmpeg flags
       '-stats': '', // an option with no neccessary value uses a blank string
@@ -74,7 +74,7 @@ let streamOptions = {
 #### _Explanation_ 
 
 ```sh
-`rtsp://192.168.1.${req.params.camera}:8554/mjpeg/1`
+`rtsp://${process.env.REACT_APP_DMZ_NAME}:${req.params.ip}/mjpeg/1` : `rtsp://192.168.1.${req.params.ip}:8554/mjpeg/1`
 ```
 > 192.168.1 musst be changed to the **< server ip address >** where the cameras are, and the **${req.params.camera}** option must be used for the appropiate camera port, which is setted up in in the Router/Gateway NAT table
 

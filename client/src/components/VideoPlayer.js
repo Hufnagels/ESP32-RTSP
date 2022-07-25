@@ -3,26 +3,26 @@ import JSMpeg from "@cycjimmy/jsmpeg-player";
 
 // const ffmpegIP = "localhost";
 
-const Video = props => {
+const VideoPlayer = props => {
   const videoRef = React.useRef(null)
   // const port = props.port
   // const ip = props.ip
   // const ffmpegIP = props.ffmpegIP
-  const { name, port, ip, ffmpegIP, width, height } = props
-
+  const { name, port, ip, ffmpegIP, wsIP, width, height, brightness, saturation, gamma } = props
+console.log('videoplayer props', props)
   useEffect(() => {
-    console.log('useEffect video')
+    // console.log('useEffect video')
     if (!videoRef.current) throw new Error('Ref is null')
-    fetch(`http://${ffmpegIP}:5002/camera/feed/${name}/${ip}/${port}?brightness=0.2&saturation=1&gamma=1`)
+    fetch(`${ffmpegIP}/camera/feed/${name}/${ip}/${port}?brightness=${brightness}&saturation=${saturation}&gamma=${gamma}`)
       .then(response => {
         //response.json()
-        console.log('response', response.status)
+        // console.log('response', response.status)
         if (response.status !== 200) return
-        var videoUrl = `ws://${ffmpegIP}:${port}`;
+        var videoUrl = `ws://${wsIP}:${port}`;
         var player = new JSMpeg.VideoElement(videoRef.current, videoUrl, {
           autoplay: true,
         });
-        console.log(player);
+        // console.log(player);
       })
   });
 
@@ -42,4 +42,4 @@ const Video = props => {
   );
 };
 
-export default Video;
+export default VideoPlayer;
